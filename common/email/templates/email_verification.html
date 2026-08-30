@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Your Email</title>
+</head>
+
+<body style="margin:0;padding:40px;background:#f5f7fb;font-family:Arial,Helvetica,sans-serif;">
+
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+        <td align="center">
+
+            <table
+                role="presentation"
+                width="600"
+                cellspacing="0"
+                cellpadding="0"
+                style="
+                    background:#ffffff;
+                    border-radius:12px;
+                    overflow:hidden;
+                    box-shadow:0 4px 12px rgba(0,0,0,.08);
+                "
+            >
+
+                <!-- Header -->
+                <tr>
+                    <td
+                        align="center"
+                        style="
+                            background:#2563eb;
+                            color:#ffffff;
+                            padding:32px;
+                        "
+                    >
+                        <h1 style="margin:0;font-size:26px;">
+                            Verify Your Email Address
+                        </h1>
+                    </td>
+                </tr>
+
+                <!-- Content -->
+                <tr>
+                    <td style="padding:40px;">
+
+                        <p style="margin-top:0;font-size:16px;">
+                            Hi {{ user.email }},
+                        </p>
+
+                        <p style="font-size:15px;line-height:1.7;color:#444;">
+                            Thank you for creating an account.
+                            Before you can start using all of our features,
+                            please verify your email address by clicking the
+                            button below.
+                        </p>
+
+                        <table
+                            role="presentation"
+                            cellspacing="0"
+                            cellpadding="0"
+                            align="center"
+                            style="margin:35px auto;"
+                        >
+                            <tr>
+                                <td
+                                    align="center"
+                                    bgcolor="#2563eb"
+                                    style="border-radius:8px;"
+                                >
+                                    <a
+                                        href="{{ verification_url }}"
+                                        style="
+                                            display:inline-block;
+                                            padding:14px 32px;
+                                            color:#ffffff;
+                                            text-decoration:none;
+                                            font-weight:bold;
+                                            font-size:15px;
+                                        "
+                                    >
+                                        Verify Email
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <p style="font-size:14px;color:#666;">
+                            This verification link will expire in
+                            <strong>10 minutes</strong>.
+                        </p>
+
+                        <p style="font-size:14px;color:#666;">
+                            If you did not create an account using this email
+                            address, you can safely ignore this email.
+                            No further action is required.
+                        </p>
+
+                        <hr
+                            style="
+                                border:none;
+                                border-top:1px solid #e5e7eb;
+                                margin:30px 0;
+                            "
+                        >
+
+                        <p
+                            style="
+                                font-size:13px;
+                                color:#888;
+                                word-break:break-all;
+                            "
+                        >
+                            If the button doesn't work, copy and paste this link
+                            into your browser:
+                        </p>
+
+                        <p
+                            style="
+                                font-size:13px;
+                                color:#2563eb;
+                                word-break:break-all;
+                            "
+                        >
+                            {{ verification_url }}
+                        </p>
+
+                    </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                    <td
+                        align="center"
+                        style="
+                            background:#f8fafc;
+                            padding:24px;
+                            color:#888;
+                            font-size:13px;
+                        "
+                    >
+                        © {% now "Y" %} Your Application
+
+                        <br><br>
+
+                        This is an automated email.
+                        Please do not reply.
+
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

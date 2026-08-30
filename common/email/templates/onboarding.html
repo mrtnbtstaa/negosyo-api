@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to negosyoAI</title>
+</head>
+
+<body style="
+    margin:0;
+    padding:40px;
+    background:#f5f7fb;
+    font-family:Arial,Helvetica,sans-serif;
+">
+
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0">
+    <tr>
+        <td align="center">
+
+            <table
+                role="presentation"
+                width="600"
+                cellspacing="0"
+                cellpadding="0"
+                style="
+                    background:#ffffff;
+                    border-radius:12px;
+                    overflow:hidden;
+                    box-shadow:0 4px 12px rgba(0,0,0,.08);
+                "
+            >
+
+                <!-- Header -->
+                <tr>
+                    <td
+                        align="center"
+                        style="
+                            background:#2563eb;
+                            color:#ffffff;
+                            padding:32px;
+                        "
+                    >
+                        <h1 style="
+                            margin:0;
+                            font-size:28px;
+                            letter-spacing:-0.5px;
+                        ">
+                            negosyoAI
+                        </h1>
+
+                        <p style="
+                            margin:8px 0 0;
+                            font-size:14px;
+                            opacity:.9;
+                        ">
+                            Your AI Business Assistant
+                        </p>
+                    </td>
+                </tr>
+
+                <!-- Content -->
+                <tr>
+                    <td style="padding:40px;">
+
+                        <h2 style="
+                            margin:0 0 20px;
+                            font-size:22px;
+                            color:#111827;
+                        ">
+                            Welcome to negosyoAI!
+                        </h2>
+
+                        <p style="
+                            margin:0 0 16px;
+                            font-size:15px;
+                            line-height:1.7;
+                            color:#444;
+                        ">
+                            Hi {{ business_owner_name }},
+                        </p>
+
+                        <p style="
+                            margin:0 0 16px;
+                            font-size:15px;
+                            line-height:1.7;
+                            color:#444;
+                        ">
+                            Thank you for subscribing to
+                            <strong>negosyoAI</strong>.
+                            Your business account is now ready.
+                        </p>
+
+                        <p style="
+                            margin:0;
+                            font-size:15px;
+                            line-height:1.7;
+                            color:#444;
+                        ">
+                            We've created a dedicated Gmail account for your
+                            negosyoAI subscription. Use the credentials below
+                            to sign in for the first time.
+                        </p>
+
+                        <!-- Account Credentials -->
+                        <table
+                            role="presentation"
+                            width="100%"
+                            cellspacing="0"
+                            cellpadding="0"
+                            style="
+                                margin:30px 0;
+                                border:1px solid #e5e7eb;
+                                border-radius:8px;
+                            "
+                        >
+                            <tr>
+                                <td style="
+                                    padding:16px 20px;
+                                    background:#f8fafc;
+                                    font-size:14px;
+                                    font-weight:bold;
+                                    color:#374151;
+                                ">
+                                    Your Account Credentials
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="padding:20px;">
+
+                                    <!-- Gmail -->
+                                    <p style="
+                                        margin:0 0 18px;
+                                        font-size:14px;
+                                        line-height:1.6;
+                                        color:#6b7280;
+                                    ">
+                                        <strong style="color:#111827;">
+                                            Gmail Address
+                                        </strong>
+                                        <br>
+
+                                        <span style="
+                                            display:inline-block;
+                                            margin-top:5px;
+                                            color:#2563eb;
+                                            font-size:15px;
+                                        ">
+                                            {{ gmail_address }}
+                                        </span>
+                                    </p>
+
+                                    <!-- Password -->
+                                    <p style="
+                                        margin:0;
+                                        font-size:14px;
+                                        line-height:1.6;
+                                        color:#6b7280;
+                                    ">
+                                        <strong style="color:#111827;">
+                                            Temporary Password
+                                        </strong>
+                                        <br>
+
+                                        <span style="
+                                            display:inline-block;
+                                            margin-top:5px;
+                                            padding:10px 14px;
+                                            background:#f3f4f6;
+                                            border-radius:6px;
+                                            font-family:monospace;
+                                            font-size:15px;
+                                            color:#111827;
+                                        ">
+                                            {{ generated_password }}
+                                        </span>
+                                    </p>
+
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- Login Button -->
+                        <table
+                            role="presentation"
+                            cellspacing="0"
+                            cellpadding="0"
+                            align="center"
+                            style="margin:30px auto;"
+                        >
+                            <tr>
+                                <td
+                                    align="center"
+                                    bgcolor="#2563eb"
+                                    style="border-radius:8px;"
+                                >
+                                    <a
+                                        href="https://mail.google.com/"
+                                        style="
+                                            display:inline-block;
+                                            padding:14px 32px;
+                                            color:#ffffff;
+                                            text-decoration:none;
+                                            font-weight:bold;
+                                            font-size:15px;
+                                        "
+                                    >
+                                        Sign in to Gmail
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <!-- First Login Instructions -->
+                        <h3 style="
+                            margin:30px 0 12px;
+                            font-size:16px;
+                            color:#111827;
+                        ">
+                            What to do next
+                        </h3>
+
+                        <ol style="
+                            margin:0;
+                            padding-left:22px;
+                            color:#444;
+                            font-size:14px;
+                            line-height:1.8;
+                        ">
+                            <li>
+                                Sign in using the Gmail address and temporary
+                                password above.
+                            </li>
+
+                            <li>
+                                Change the temporary password to a secure
+                                password of your choice.
+                            </li>
+
+                            <li>
+                                Keep your new password private and store it
+                                securely.
+                            </li>
+
+                            <li>
+                                You're ready to start using negosyoAI.
+                            </li>
+                        </ol>
+
+                        <!-- Security Notice -->
+                        <div style="
+                            margin:30px 0;
+                            padding:16px 18px;
+                            background:#fff7ed;
+                            border-left:4px solid #f97316;
+                            border-radius:4px;
+                        ">
+                            <p style="
+                                margin:0;
+                                font-size:14px;
+                                line-height:1.6;
+                                color:#7c2d12;
+                            ">
+                                <strong>Important Security Notice</strong>
+                                <br>
+                                The password above is temporary.
+                                Please change it immediately after your first
+                                login and do not share your credentials with
+                                anyone.
+                            </p>
+                        </div>
+
+                        <hr style="
+                            border:none;
+                            border-top:1px solid #e5e7eb;
+                            margin:30px 0;
+                        ">
+
+                        <p style="
+                            margin:0;
+                            font-size:13px;
+                            line-height:1.6;
+                            color:#888;
+                        ">
+                            If you did not subscribe to negosyoAI or believe
+                            you received this email by mistake, please contact
+                            our support team.
+                        </p>
+
+                    </td>
+                </tr>
+
+                <!-- Footer -->
+                <tr>
+                    <td
+                        align="center"
+                        style="
+                            background:#f8fafc;
+                            padding:24px;
+                            color:#888;
+                            font-size:13px;
+                        "
+                    >
+                        © {% now "Y" %} negosyoAI
+                        <br><br>
+                        Your AI-powered business assistant.
+                    </td>
+                </tr>
+
+            </table>
+
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
