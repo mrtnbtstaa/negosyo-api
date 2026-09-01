@@ -25,7 +25,7 @@ class Messages:
 
     NOT_FOUND = "Resource not found."
 
-    CONFLICT = "Conflict detected."
+    CONFLICT = "Conflict resource detected."
 
     TOO_MANY_REQUESTS = "Too many requests."
 
@@ -47,7 +47,7 @@ class Messages:
 
     INVALID_CREDENTIALS = "Invalid email or password."
 
-    EMAIL_EXISTS = "Email is already registered."
+    EMAIL_EXISTS = "An account with this email already exists."
 
     EMAIL_ALREADY_VERIFIED = "Email is already verified."
 

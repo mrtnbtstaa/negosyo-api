@@ -46,6 +46,11 @@ class LogoutBlacklistSerializer(TokenBlacklistSerializer):
 # ------------------------------------------
 class RegisterSerializer(serializers.Serializer):
 
+    full_name = RequiredCharField(
+        write_only=True,
+        label="Full name"
+    )
+
     email = RequiredEmailField(
         write_only=True,
         label="Email",
@@ -63,34 +68,16 @@ class RegisterSerializer(serializers.Serializer):
         label="Password"
     )
 
-    confirm_password = RequiredCharField(
-        write_only=True,
-        min_length=8,
-        max_length=255,
-        label="Confirm password",
-        validators=[
-            validate_password
-        ]
-    )
 
-    profile_image = serializers.ImageField(
-            required=False,
-            allow_null=True,
-            validators=[
-                ImageFileValidator(),
-            ],
-        )
+    # profile_image = serializers.ImageField(
+    #         required=False,
+    #         allow_null=True,
+    #         validators=[
+    #             ImageFileValidator(),
+    #         ],
+    #     )
 
-    def validate(self, attrs):
 
-        if attrs["password"] != attrs["confirm_password"]:
-            raise serializers.ValidationError(
-                {
-                    "confirm_password": ["Passwords do not match."]
-                }
-            )
-
-        return attrs
 
 # ------------------------------------------
 # Login serializer

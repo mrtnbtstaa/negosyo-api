@@ -8,8 +8,6 @@ from common.constants.audit import AuditActionEnum
 from apps.audit_logging.services import AuditLogService
 from apps.audit_logging.models import Action
 from django.contrib.auth import get_user_model
-from django.db.models import Model
-from typing import Type, ClassVar
 from rest_framework_simplejwt.views import (
     TokenObtainPairView, 
     TokenRefreshView,
@@ -60,10 +58,10 @@ class RegisterView(PublicBaseApiView, generics.CreateAPIView):
         validated_data = serializer.validated_data
 
         created_user = AuthenticationService.register(
+            full_name=validated_data["full_name"],
             email=validated_data["email"],
             password=validated_data["password"],
-            profile_image=validated_data.get("profile_image", None),
-            request=request
+            # profile_image=validated_data.get("profile_image", None),
         )
 
         created_user.refresh_from_db()
@@ -75,7 +73,7 @@ class RegisterView(PublicBaseApiView, generics.CreateAPIView):
             instance=created_user
         )
 
-        return CreatedResponse(message=Messages.CREATED, data=UserSerializer(created_user).data)
+        return CreatedResponse(message=Messages.CREATED)
 
 class LoginView(TokenObtainPairView):
 

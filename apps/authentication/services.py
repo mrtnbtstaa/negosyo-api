@@ -22,37 +22,40 @@ class AuthenticationService:
     def __new__(cls):
         raise TypeError("AuthenticationService cannot be instantiated.")
 
-    @staticmethod
+    @classmethod
     def register(
+        cls,
         *,
+        full_name: str,
         email: str,
         password: str,
-        profile_image=None,
-        request: Any
+        # profile_image=None,
     ) -> User:
 
         if UserSelector.exists(email=email):
-            raise ConflictException(message=Messages.EMAIL_EXISTS)
+            raise ConflictException(errors={
+                "email": [Messages.EMAIL_EXISTS]
+            })
 
         user = User.objects.create_user(
+            full_name=full_name,
             email=email,
             password=password
         )
 
-        if profile_image:
-            ProfileService.create_profile(
-                user,
-                profile_image
-            )
+        # if profile_image:
+        #     ProfileService.create_profile(
+        #         user,
+        #         profile_image
+        #     )
     
         if settings.WITH_EMAIL_VERIFICATION:
             EmailService.send_verification_link(user)
 
         return user
 
-
-    @staticmethod
-    def login(email: str, password: str, request: Any) -> dict:
+    @classmethod
+    def login(cls, email: str, password: str, request: Any) -> dict:
 
         user = authenticate(request, email=email, password=password)
 
@@ -78,8 +81,9 @@ class AuthenticationService:
             "user": user,
         }
 
-    @staticmethod
+    @classmethod
     def logout(
+        cls,
         request: Any
     ) -> None:
         """
@@ -90,8 +94,8 @@ class AuthenticationService:
         logout(request)
 
 
-    @staticmethod
-    def change_password(data: dict, request: Any) -> None:
+    @classmethod
+    def change_password(cls, data: dict, request: Any) -> None:
         """
             Change password user.
         """
@@ -111,8 +115,8 @@ class AuthenticationService:
             instance=user
         )
 
-    @staticmethod
-    def forgot_password(email: str) -> User:
+    @classmethod
+    def forgot_password(cls, email: str) -> User:
         """
             Forgot password user
         """
@@ -140,8 +144,8 @@ class AuthenticationService:
 
         return user
 
-    @staticmethod
-    def reset_password(data: dict) -> None:
+    @classmethod
+    def reset_password(cls,data: dict) -> None:
 
         user_id = force_str(urlsafe_base64_decode(data["uid"]))
 
@@ -158,8 +162,8 @@ class AuthenticationService:
         user.save(update_fields=["password"])
                 
 
-    @staticmethod
-    def verify_email(uid: str, token: str) -> User:
+    @classmethod
+    def verify_email(cls,uid: str, token: str) -> User:
         """
             Verify email for user
         """
@@ -182,8 +186,8 @@ class AuthenticationService:
 
         return user
 
-    @staticmethod
-    def resend_email_verification(email: str) -> None:
+    @classmethod
+    def resend_email_verification(cls,email: str) -> None:
 
         user = UserSelector.get_or_none(email=email)
 
@@ -213,8 +217,9 @@ class AuthenticationService:
             ttl=120
         )
             
-    @staticmethod
+    @classmethod
     def me(
+        cls,
         data: dict,
         request: Any
     ) -> User:

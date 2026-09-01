@@ -4,7 +4,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 from common.models.timestamp_model import TimestampModel
 from .manager import CustomUserManager
-# Create your models here.
 
 class User(AbstractUser, TimestampModel):
 
@@ -15,6 +14,7 @@ class User(AbstractUser, TimestampModel):
         default=uuid.uuid4,
         editable=False
     )
+    full_name = models.CharField(null=True)
     email = models.EmailField(unique=True)
     email_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)

@@ -22,6 +22,9 @@ INSTALLED_APPS = [
     'apps.authentication',
     'apps.profiles',
     'apps.audit_logging',
+    'apps.customers',
+    'apps.business',
+    'apps.branches',
     'common.email'
 ]
 
