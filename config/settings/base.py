@@ -23,9 +23,14 @@ INSTALLED_APPS = [
     'apps.profiles',
     'apps.audit_logging',
     'apps.customers',
-    'apps.business',
+    'apps.merchants',
     'apps.branches',
-    'common.email'
+    'apps.suppliers',
+    'apps.purchase_orders',
+    'apps.product_stock',
+    'apps.cart',
+    'common.email',
+    'silk'
 ]
 
 MIDDLEWARE = [
@@ -36,7 +41,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'common.middleware.idempotency.IdempotencyMiddleware', # Idempotency middleware
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'silk.middleware.SilkyMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -113,7 +119,7 @@ REST_FRAMEWORK = {
 }
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=15),
+    "ACCESS_TOKEN_LIFETIME": timedelta(hours=1),
     "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
     "ROTATE_REFRESH_TOKENS": True,
     "BLACKLIST_AFTER_ROTATION": True,
@@ -137,12 +143,14 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'apps', 'media')
 
 # Pagination Configuration
-DEFAULT_PAGE_SIZE = 10
+DEFAULT_PAGE_SIZE = 4
 
 # Authentication Model
 AUTH_USER_MODEL = "users.User"

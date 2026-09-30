@@ -27,7 +27,7 @@ class BaseModelViewSet(
 
 
     selector: ClassVar = None
-
+    
     pagination_class = StandardPagination
 
     def get_queryset(self) -> QuerySet:
@@ -41,7 +41,7 @@ class BaseModelViewSet(
     def list(self, request, *args, **kwargs):
         
         queryset = self.filter_queryset(
-            self.get_queryset()
+            self.get_queryset().order_by("created_at")
         )
 
         page = self.paginate_queryset(queryset)
@@ -75,10 +75,10 @@ class BaseModelViewSet(
 
     def create(self, request, *args, **kwargs):
 
-        serializer = self.get_serializer(data=request.data)
+        serializer = self.get_serializer(data=request.data, context={"request": request})
 
         serializer.is_valid(raise_exception=True)
-
+        
         self.perform_create(serializer)
 
         AuditLogService.log(

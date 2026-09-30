@@ -3,13 +3,13 @@ from .serializers import CreateCustomerSerializer
 from .services import CustomerService
 from common.responses.success import CreatedResponse
 from common.constants.messages import Messages
-from apps.authentication.serializers import RegisterSerializer
+from rest_framework import generics
 
-class RegisterCustomerView(PublicBaseApiView):
+class RegisterCustomerView(PublicBaseApiView, generics.CreateAPIView):
 
     def post(self, request):
 
-        serializer = RegisterSerializer(data=request.data)
+        serializer = CreateCustomerSerializer(data=request.data)
 
         serializer.is_valid(raise_exception=True)
 

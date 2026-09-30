@@ -28,8 +28,8 @@ class SerializerActionMixin:
         Falls back to default serializer_class.
         """
 
-        action = getattr(self,"action",None)
-
+        action = getattr(self, "action", None)
+        
         serializer_class = self.serializer_action_classes.get(action)
 
         if serializer_class:

@@ -49,7 +49,7 @@ class CreatedResponse(BaseResponse):
         )
 
 
-class NoContentResponse(Response):
+class NoContentResponse(BaseResponse):
     """
     HTTP 204 No Content
 
@@ -57,7 +57,12 @@ class NoContentResponse(Response):
     A 204 response must not include a message body.
     """
 
-    def __init__(self) -> None:
+    def __init__(
+        self,
+        *,
+        message: str = Messages.DELETED,
+        ) -> None:
         super().__init__(
-            status=status.HTTP_204_NO_CONTENT
+            status=status.HTTP_204_NO_CONTENT,
+            message=message
         )

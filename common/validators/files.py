@@ -16,6 +16,7 @@ class ImageFileValidator:
     """
 
     ALLOWED_MIME_TYPES = {
+        "image/jpg",
         "image/jpeg",
         "image/png",
         "image/webp",
@@ -29,6 +30,7 @@ class ImageFileValidator:
     }
 
     ALLOWED_FORMATS = {
+        "JPG",
         "JPEG",
         "PNG",
         "WEBP",
@@ -52,6 +54,7 @@ class ImageFileValidator:
         self._validate_image(file)
 
     def _validate_size(self, file) -> None:
+        
         if file.size == 0:
             raise ValidationException(
                 message="The uploaded file is empty."

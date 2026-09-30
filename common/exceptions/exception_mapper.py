@@ -2,8 +2,6 @@ from __future__ import annotations
 from typing import Type
 from rest_framework_simplejwt.tokens import TokenError, TokenBackendError
 from django.core.exceptions import PermissionDenied
-
-
 from cloudinary.exceptions import (
     NotAllowed,
     AuthorizationRequired,
@@ -61,10 +59,10 @@ from .api import (
     StorageAlreadyExistsException,
     StorageAuthorizationException,
     StorageRateLimitException,
-    StorageBadRequestException
+    StorageBadRequestException,
+    PermissionDeniedException
 )
 from .base import BaseApiException
-
 
 class ExceptionMapper:
     """
@@ -79,6 +77,7 @@ class ExceptionMapper:
         DRFPermissionDenied: ForbiddenException,
         NotAuthenticated: UnauthorizedException,
         AuthenticationFailed: AuthenticationFailedException,
+        PermissionDenied: PermissionDeniedException,
 
         # DRF
         ValidationError: ValidationException,
@@ -152,5 +151,5 @@ class ExceptionMapper:
         for source_exception, target_exception in cls.EXCEPTION_MAPPER.items():
             if isinstance(exc, source_exception):
                 return ErrorResponse(target_exception())
-
+            
         return None

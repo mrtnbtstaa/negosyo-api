@@ -9,6 +9,7 @@ from common.utils.get_ip import get_client_ip
 from common.constants.excluded_fields import EXCLUDED_FIELDS, MASK_FIELDS
 from common.utils.masking import mask_email
 from uuid import UUID
+from decimal import Decimal
 
 class AuditLogService:
 
@@ -63,10 +64,16 @@ class AuditLogService:
     def _serialize_value(
         value: Any,
     ) -> Any:
-
+    
         if value is None:
             return None
 
+        if isinstance(value, Decimal):
+            return str(value)
+        
+        if isinstance(value, int):
+            return str(value)
+        
         if isinstance(value, UUID):
             return str(value)
 

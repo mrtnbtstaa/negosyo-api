@@ -16,6 +16,8 @@ class Messages:
     VALIDATION_FAILED = "Validation failed."
 
     BAD_REQUEST = "Bad request."
+    
+    FORBIDDEN = "You don't have permission to access this resource."
 
     JSON_ERROR = "Invalid json format provided"
 

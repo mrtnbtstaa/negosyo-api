@@ -30,7 +30,7 @@ class StandardPagination(
     page_size = getattr(
         settings,
         "DEFAULT_PAGE_SIZE",
-        10,
+        8,
     )
 
     page_size_query_param = QueryParams.PAGE_SIZE

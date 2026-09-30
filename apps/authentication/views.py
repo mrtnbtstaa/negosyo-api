@@ -77,7 +77,7 @@ class RegisterView(PublicBaseApiView, generics.CreateAPIView):
 
 class LoginView(TokenObtainPairView):
 
-    throttle_classes = [LoginThrottle]
+    # throttle_classes = [LoginThrottle]
 
     def post(self, request):
         

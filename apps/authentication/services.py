@@ -42,7 +42,7 @@ class AuthenticationService:
             email=email,
             password=password
         )
-
+        
         # if profile_image:
         #     ProfileService.create_profile(
         #         user,
@@ -72,7 +72,7 @@ class AuthenticationService:
             raise UnauthorizedException(message=Messages.VERIFY_EMAIL)
 
         refresh = JWTManager.create_refresh_token(user)
-
+        
         login(request, user)
 
         return {

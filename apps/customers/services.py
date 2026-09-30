@@ -12,7 +12,7 @@ class CustomerService:
         raise TypeError("CustomerService cannot be instantiated.")
 
     @classmethod
-    def create_customer(cls, *, full_name: str, email: str, password: str) -> None:
+    def create_customer(cls, full_name: str, email: str, password: str) -> None:
 
         if UserSelector.exists(email=email):
             raise ConflictException(errors={
@@ -22,7 +22,8 @@ class CustomerService:
         user = User.objects.create_user(
             full_name=full_name,
             email=email,
-            password=password
+            password=password,
+            account_type="customer"
         )
 
         Customer.objects.create(user=user)

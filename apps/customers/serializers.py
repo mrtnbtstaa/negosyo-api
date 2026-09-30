@@ -1,12 +1,7 @@
-from rest_framework import serializers
 from .models import Customer
+from apps.authentication.serializers import RegisterSerializer
 
-class CreateCustomerSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Customer
-        read_only_fields = ("id", "user")
-        fields = "__all__"
-
+class CreateCustomerSerializer(RegisterSerializer):
+    pass
 
   

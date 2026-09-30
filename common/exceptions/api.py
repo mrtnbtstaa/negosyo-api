@@ -2,12 +2,18 @@ from rest_framework import status
 from common.constants.error_codes import ErrorCodes
 from common.constants.messages import Messages
 from .base import BaseApiException
+from django.core.exceptions import PermissionDenied
 
 class BadRequestException(BaseApiException):
     status_code = status.HTTP_400_BAD_REQUEST
     default_message = Messages.BAD_REQUEST
     default_error_code = ErrorCodes.BAD_REQUEST
 
+
+class PermissionDeniedException(BaseApiException, PermissionDenied):
+    status_code = status.HTTP_403_FORBIDDEN
+    default_message = Messages.FORBIDDEN
+    default_error_code = ErrorCodes.FORBIDDEN
 
 class ValidationException(BaseApiException):
     status_code = status.HTTP_400_BAD_REQUEST
@@ -30,7 +36,6 @@ class AuthenticationExpiredException(UnauthorizedException):
 
 class TokenExpiredException(UnauthorizedException):
     default_message = Messages.TOKEN_INVALID
-
 
 class ForbiddenException(BaseApiException):
     status_code = status.HTTP_403_FORBIDDEN

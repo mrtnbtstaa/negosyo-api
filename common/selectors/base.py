@@ -1,9 +1,6 @@
 from __future__ import annotations
-
 from typing import Any, ClassVar
-
 from django.db.models import Model, QuerySet
-
 from common.exceptions.api import NotFoundException
 
 
@@ -33,7 +30,7 @@ class BaseSelector:
 
     searchable_fields: ClassVar[tuple[str, ...]] = () # Searchable fields (e.g., email, first_name, last_name)
 
-    filterable_fields: ClassVar[dict[str, tuple[str, ...]]] = {}
+    filterable_fields: ClassVar[dict[str, tuple[str, ...]]] = {} # Filterable fields 
 
     ordering_fields: ClassVar[tuple[str, ...]] = () # What client allowed to request
 
@@ -165,3 +162,5 @@ class BaseSelector:
             .filter(**filters)
             .exists()
         )
+        
+    
